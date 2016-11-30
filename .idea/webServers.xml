@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a2b604bb-6ffe-4943-ae49-025a7fbb6b19" name="www.dpinformatics.be/Tesla2" url="http://www.dpinformatics.be">
+        <fileTransfer host="www.dpinformatics.be" port="21" password="dfeedfdadfc3dfeedfcfdfdcdf8edf92" username="phpstorm@dpinformatics.be">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

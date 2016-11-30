@@ -1,0 +1,43 @@
+		<title><?php echo($title); ?></title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<style>
+
+			td,
+			th {
+				font-size: medium;
+			}
+			.xlargefont {
+				font-size: x-large;
+			}
+		</style>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<!--[if lt IE 9]>
+			<script type="text/javascript" src="js/html5.js"></script>
+			<link rel="stylesheet" href="css/ie.css" type="text/css" media="all">
+		<![endif]-->
+		<!--[if lt IE 7]>
+			<div style=' clear: both; text-align:center; position: relative;'>
+				<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a>
+			</div>
+		<![endif]-->
+
+		<script type="text/javascript">
+			function changeCSS() {
+
+				var oldlink = document.getElementsByTagName("link").item(0);
+
+				var newlink = document.createElement("link")
+				newlink.setAttribute("rel", "stylesheet");
+				newlink.setAttribute("type", "text/css");
+				if (oldlink.getAttribute("href") == "css/slate.css"){
+					newlink.setAttribute("href", "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css");
+				}else{
+					newlink.setAttribute("href", "css/slate.css");
+				}
+
+				document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+			}
+		</script>
