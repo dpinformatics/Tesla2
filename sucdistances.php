@@ -30,7 +30,6 @@
 
     <div id="app">
         <div class="row">
-
             <div class="col-md-2 hidden-xs"></div>
             <div class="col-xs-6 col-md-4" >
                 <div class="form-group" align="left">
@@ -53,9 +52,34 @@
             <div class="col-md-2 hidden-xs" >
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-2 hidden-xs"></div>
+            <div class="col-xs-6 col-md-4" >
+                <div class="form-group" align="left">
+                    <label for="destination" class="control-label xlargefont">Locatie :</label>
+                    <select class="form-control input-lg xlargefont" id="direction">
+                        <option v-for="(dest, i) in destinations" v-on:click="setdest(i)">{{ dest.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-4" >
+                <div class="form-group" align="left">
+                    <label for="direction" class="control-label xlargefont">Richting :</label>
+                    <select class="form-control input-lg xlargefont" id="direction" v-model="direction">
+                        <option value='A'>Alles</option>
+                        <option value='N'>Noord</option>
+                        <option value='S'>South</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2 hidden-xs" >
+            </div>
+        </div>
+
         <div class="row">
 
-            <div class="col-xs-12">
+            <div class="col-xs-12" >
                 <!--p>
                 <ul v-if="activedest < 4" id="example-1">
                     <li v-for="leg in destinations[activedest].legs" v-if="direction == leg.dir || direction=='A'">
@@ -64,7 +88,7 @@
                 </ul>
                 </p -->
 
-                <h2>Mogelijke locaties </h2>
+                <h2>Mogelijke locaties voor {{ destinations[activedest].name }}</h2>
                 <table class="table table-striped table-hover">
                     <tr class="bg-success">
                         <th>&nbsp</th>
@@ -75,8 +99,9 @@
                         <th class="text-center">Verbruik<br>kWh</th>
                         <th class="text-center">Gemiddeld<br>kWh</th>
                         <th class="text-center">Rijtijd<br>u</th>
+                        <th class="text-center">Laadtijd<br>u</th>
                     </tr>
-                    <tr v-for="leg in destinations[activedest].legs" v-if="direction == leg.dir || direction=='A'">
+                    <tr v-for="leg in destinations[activedest].legs" v-if="direction == leg.dir || direction=='A' || leg.dir == ''">
                         <td><!--a class="open-WayPointDetail btn btn-primary btn-lg" data-toggle="modal"
                                data-target="#myWayPointDetail" ng-click="tc.activewaypoint = $index">Detail</a-->
                         </td>
@@ -91,6 +116,7 @@
                         <td class="text-center">{{ leg.consumption}}</td>
                         <td class="text-center">{{ leg.average}}</td>
                         <td class="text-center">{{ leg.drivetime}}</td>
+                        <td class="text-center">{{ leg.chargetime}}</td>
                     </tr>
                 </table>
 
@@ -101,39 +127,6 @@
 </div>
 </body>
 
-<script>
-    new Vue({
-        el: '#app',
-        data: {
-            message: 'Hello Vue.js! test	',
-            destinations:[
-                { name:''
-                    , legs:[]
-                },
-                { name:'Brecht'
-                    , legs:[
-                    { dest:'Brecht'      		, distance:0          , typical:0, dir:''}
-                    , { dest:'Aartselaar'      		, distance:100          , typical:105, dir:'S'}
-                    , { dest:'Machelen'          , distance:150          , typical:180, dir:'S'}
-                ]
-                },
-                { name:'Aartselaar'
-                    , legs:[
-                    { dest:'Brecht'      		, distance:100          , typical:95, dir:'N'}
-                    , { dest:'Aartselaar'      		, distance:0          , typical:0, dir:''}
-                    , { dest:'Machelen'          , distance:50          , typical:75, dir:'S'}
-                ]
-                },
-                { name:'Machelen'
-                    , legs:[
-                    { dest:'Brecht'      		, distance:150          , typical:170, dir:'N'}
-                    , { dest:'Aartselaar'          , distance:50          , typical:40, dir:'N'}
-                ]
-                }
-            ],
-            activedest:0,
-            direction: 'A'
-        }
-    })</script>
+<script src="js/sucdistances.js"></script>
 
 </html>
