@@ -10,26 +10,29 @@
     ?>
 </head>
 
-<body id="main">
-<div class="container-fluid" style="max-width: 1200px">
+<body id="head" onload="DetermineDayNight()">
+<div id="app" class="container-fluid" style="max-width: 1200px">
     <div class="row" align="center">
         <div class="col-md-12 visible-lg visible-md">
             <img class="img-responsive" src="<?php echo($images . "/tesla_" . rand(0, 0) .".jpg"); ?>" alt="">
             <h1 >Overzicht afstanden tussen SuperChargers</h1>
         </div>
     </div>
+
     <div class="row" align="center">
         <div class="col-md-12">
             <h1 >
                 <a class="btn btn-lg btn-default pull-left" href="index.php"><i class="fa fa-undo"></i> Terug naar startpagina</a>
-                <a class="btn btn-lg btn-default pull-left" href="#"><i  class="fa fa-refresh"></i> Verfrissen </a>
-                <a class="btn btn-lg btn-default pull-right" href="#" onclick="changeCSS()"><i class="fa fa-undo"></i> Dag - Nacht</a>
+                <a  v-if="device != 'CAR'" class="btn btn-lg btn-default pull-left" href="#" v-on:click.prevent="device = 'CAR'"><i  class="fa fa-car"></i> Tesla </a>
+                <a  v-if="device != 'PC'" class="btn btn-lg btn-default pull-left" href="#" v-on:click.prevent="device = 'PC'"><i  class="fa fa-desktop"></i> PC </a>
+                <a id="day" style="visibility: hidden" class="btn btn-lg btn-default pull-right" href="#" onclick="changeCSS('D')"><i class="fa fa-sun-o"></i> Dag</a>
+                <a id="night" style="visibility: visible" class="btn btn-lg btn-default pull-right" href="#" onclick="changeCSS('N')"><i class="fa fa-moon-o"></i> Nacht</a>
             </h1>
         </div>
     </div>
 
-    <div id="app">
-        <div class="row">
+    <div>
+        <div class="row" v-if="device == 'PC'">
             <div class="col-md-2 hidden-xs"></div>
             <div class="col-xs-6 col-md-4" >
                 <div class="form-group" align="left">

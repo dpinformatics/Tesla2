@@ -24,7 +24,7 @@ new Vue({
                     , { destid:11, dest:'SuC Albaret-Sainte-Marie'  , distance:'-----'  , typical:'---', consumption:'--', average:'---', drivetime:'----', chargetime:'----', dir:'-'}
                     , { destid:12, dest:'SuC Aire du Caylar'        , distance:'-----'  , typical:'---', consumption:'--', average:'---', drivetime:'----', chargetime:'----', dir:'-'}
                     , { destid:13, dest:'Vereilles - La Tour-sur-Orb', distance:'-----' , typical:'---', consumption:'--', average:'---', drivetime:'----', chargetime:'----', dir:'-'}
-                    ]
+                ]
             },
             { name:'SuC Aartselaar',
                 legs:[{ destid:0,  dest:'Brecht'                    , distance:'32,7'   , typical:'33' , consumption:'6' , average:'---', drivetime:'0:35', chargetime:'----', dir:'N'}
@@ -250,18 +250,18 @@ new Vue({
 
         ],
         activedest:1,
-        direction: 'A'
+        direction: 'A',
+        device: 'CAR',
+        time: 'D'
     },
 
     methods:{
         setdest: function (i, event)
             {
                 alert('test' + i);
-                console.assert(false, 'test');
-                console.assert(true, 'test');
-                this.activedest = i;
             }
        ,
         newfunct:function(){}
     }
 })
+

@@ -25,7 +25,53 @@
 		<![endif]-->
 
 		<script type="text/javascript">
-			function changeCSS() {
+			function DetermineDayNight(){
+				var sunrise = [09, 23];
+				var sunset = [20, 49];
+
+				var sunrise_m = sunrise[0] * 60 + sunrise[1];
+				var sunset_m = sunset[0] * 60 + sunset[1];
+				//alert('sunrise : ' + sunrise_m + ' sunset : ' + sunset_m);
+
+				var now = new Date();
+				var now_m = now.getHours() * 60 + now.getMinutes();
+
+				if (now_m > sunset_m - 60 && now_m <= sunset_m + 60) {
+					//alert("dusk");
+					changeCSS('N');
+				} else if (now_m > sunrise_m - 60 && now_m <= sunrise_m + 60) {
+					//alert("dawn");
+					changeCSS('D');
+				} else if (now_m > sunrise_m + 60 && now_m <= sunset_m - 60) {
+					//alert("day");
+					changeCSS('D');
+				} else {
+					//alert("night");
+					changeCSS('N');
+				}
+
+			}
+			function changeCSS(type) {
+
+				var oldlink = document.getElementsByTagName('link').item(0);
+
+				var newlink = document.createElement('link')
+				newlink.setAttribute('rel', 'stylesheet');
+				newlink.setAttribute("type", "text/css");
+				if (type == 'D'){
+					newlink.setAttribute("href", "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css");
+					document.getElementById("day").style = "visibility: hidden";
+					document.getElementById("night").style = "visibility: visible";
+				}else{
+					newlink.setAttribute("href", "css/slate.css");
+					document.getElementById("day").style = "visibility: visible";
+					document.getElementById("night").style = "visibility: hidden";
+				}
+
+				document.getElementsByTagName("head").item(0).replaceChild(newlink, oldlink);
+			}
+
+			function changedevice() {
 
 				var oldlink = document.getElementsByTagName("link").item(0);
 
