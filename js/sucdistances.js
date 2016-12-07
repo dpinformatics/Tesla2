@@ -6,9 +6,9 @@ new Vue({
     data: {
         message: 'Distances between SuperChargers',
         destinations:[
-            { name:''
+            /*{ name:''
                 , legs:[]
-            },
+            },*/
             { name:'Brecht',
                 legs:[{ destid:0,  dest:'Brecht'                    , distance:'-----'  , typical:'---', consumption:'--', average:'---', drivetime:'----', chargetime:'----', dir:''}
                     , { destid:1,  dest:'SuC Aartselaar'            , distance:'31,5'   , typical:'30' , consumption:'6' , average:'190', drivetime:'0:30', chargetime:'----', dir:'S'}
