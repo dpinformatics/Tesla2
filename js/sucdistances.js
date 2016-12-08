@@ -249,7 +249,7 @@ new Vue({
             }
 
         ],
-        activedest:1,
+        activedest: 0,
         direction: 'A',
         device: 'CAR',
         time: 'D'
