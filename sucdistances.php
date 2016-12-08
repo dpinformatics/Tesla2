@@ -57,7 +57,7 @@
                         <label for="direction" class="control-label xlargefont">Richting :</label>
                         <select class="form-control input-lg xlargefont" id="direction" v-model="direction">
                             <option value='A'>Alles</option>
-                            <option value='B'>Bereikbaar</option>
+                            <option value='R'>Bereikbaar</option>
                             <option value='N'>Noordwaarts</option>
                             <option value='S'>Zuidwaarts</option>
                         </select>
@@ -84,7 +84,7 @@
                             <th class="text-center">Rijtijd<br>u</th>
                             <th class="text-center">Laadtijd<br>u</th>
                         </tr>
-                        <tr v-for="leg in destinations[activedest].legs" v-if="direction == leg.dir || direction=='A' || leg.dir == '' || (direction == 'B' && leg.dir != '-')">
+                        <tr v-for="leg in destinations[activedest].legs" v-if="direction == leg.dir || direction=='A' || leg.dir == '' || (direction == 'R' && leg.dir != '-')" v-on:click.prevent="activedest = leg.destid">
                             <td> </td>
                             <td>
                                 <a v-on:click.prevent="activedest = leg.destid" class="btn-lg btn-link" v-if="leg.dir != '-'">
