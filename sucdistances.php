@@ -28,13 +28,13 @@
                     <a class="btn btn-lg btn-default pull-left" href="index.php"><i class="fa fa-undo"></i> Terug naar startpagina</a>
                     <a  v-if="device != 'CAR'" class="btn btn-lg btn-default pull-left" href="#" v-on:click.prevent="device = 'CAR'"><i  class="fa fa-car"></i> Tesla </a>
                     <a  v-if="device != 'PC'" class="btn btn-lg btn-default pull-left" href="#" v-on:click.prevent="device = 'PC'"><i  class="fa fa-desktop"></i> PC </a>
-                    <div class="dropdown pull-left">
+                    <!--div class="dropdown pull-left">
                         <button class="btn btn-lg btn-default dropdown-toggle" type="button" data-toggle="dropdown">Andere paginas<span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li><a href="#" v-on:click.prevent="device = 'CAR'"><i  class="fa fa-car"></i> Tesla </a></li>
                             <li><a href="#" v-on:click.prevent="device = 'PC'"><i  class="fa fa-desktop"></i> PC </a></li>
                         </ul>
-                    </div>
+                    </div-->
                     <a id="day" style="visibility: hidden" class="btn btn-lg btn-default pull-right" href="#" onclick="changeCSS('D')"><i class="fa fa-sun-o"></i> Dag</a>
                     <a id="night" style="visibility: visible" class="btn btn-lg btn-default pull-right" href="#" onclick="changeCSS('N')"><i class="fa fa-moon-o"></i> Nacht</a>
                 </h1>
@@ -42,9 +42,19 @@
         </div>
 
         <!-- Show the selection options -->
-        <div class="row">
+        <div class="row" align="center" v-if="device == 'CAR'">
+            <div class="col-md-12">
+                <h1 >
+                    <a  v-if="direction != 'A'" class="btn btn-lg btn-default pull-left" href="#" v-on:click.prevent="direction = 'A'"><i  class="fa fa-globe"></i> Alles </a>
+                    <a  v-if="direction != 'R'" class="btn btn-lg btn-default pull-left" href="#" v-on:click.prevent="direction = 'R'"><i  class="fa fa-recycle"></i> Bereikbaar </a>
+                    <a  v-if="direction != 'N'" class="btn btn-lg btn-default pull-left" href="#" v-on:click.prevent="direction = 'N'"><i  class="fa fa-arrow-up"></i> Noordwaarts </a>
+                    <a  v-if="direction != 'S'" class="btn btn-lg btn-default pull-left" href="#" v-on:click.prevent="direction = 'S'"><i  class="fa fa-arrow-down"></i> Zuidwaarts </a>
+                </h1>
+            </div>
+        </div>
+        <div class="row" v-if="device == 'PC'">
                 <div class="col-md-2 hidden-xs"></div>
-                <div class="col-xs-6 col-md-4" v-if="device == 'PC'">
+                <div class="col-xs-6 col-md-4">
                     <div class="form-group" align="left">
                         <label for="destination" class="control-label xlargefont">Locatie :</label>
                         <select class="form-control input-lg xlargefont" id="direction" v-model="activedest">
