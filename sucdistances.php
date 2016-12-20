@@ -16,7 +16,7 @@
         <!-- show the image -->
         <div class="row" align="center">
             <div class="col-md-12 visible-lg visible-md">
-                <img class="img-responsive" src="<?php echo($images . "/tesla_" . rand(0, 0) .".jpg"); ?>" alt="">
+                <img class="img-responsive" src="<?php echo($images . "/tesla_" . rand(0, 10) .".jpg"); ?>" alt="">
                 <h1><?php echo($title); ?></h1>
             </div>
         </div>
@@ -81,7 +81,10 @@
         <div class="row" >
                 <div class="col-xs-12" >
 
-                    <h2>Mogelijke locaties voor {{ destinations[activedest].name }}</h2>
+                    <h2  v-if="direction == 'A'">Alle mogelijke bestemmingen vanuit {{ destinations[activedest].name }}</h2>
+                    <h2  v-if="direction == 'R'">Bereikbare bestemmingen vanuit {{ destinations[activedest].name }}</h2>
+                    <h2  v-if="direction == 'N'">Bereikbare bestemmingen ten noorden van {{ destinations[activedest].name }}</h2>
+                    <h2  v-if="direction == 'S'">Bereikbare bestemmingen ten zuiden van {{ destinations[activedest].name }}</h2>
                     <table class="table table-striped table-hover">
                         <tr class="bg-success">
                             <th>&nbsp</th>
